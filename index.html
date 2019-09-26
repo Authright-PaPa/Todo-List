@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="list.css">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Todo List</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
+        integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="icon sunny">
+        <div class="sun">
+            <div class="rays"></div>
+        </div>
+    </div>
+    
+    <div class="header" id="myHeader">
+        <h2 id="time"></h2>
+        <!-- <h1 id="weekday"></h1>
+        <h2 id="date"></h2> -->
+    </div>
+
+    <div class="addFrame" id="addButton">
+        <input type="text" id="todo" placeholder="Add a new task">
+        <button class="papa-button" type="submit" id="addBtn">add</button>
+        <!-- <button class="papa-button" id="deleteBtn" onclick="removeTask(this)">delete</button> -->
+    </div>
+    
+    <!--todo-list-->
+    <div class="list">
+        <h3>Todo List</h3>
+        <ul class="ul-list" id="ul-list" data-empty-message="Time to enjoy the rest of your day :)">
+                <li class="li-list">
+                        <input type="checkbox" class="status"> 
+                        <label> Buy Starbucks at 9am</label>
+                        <!-- <button class="delete papa-button">Delete</button> -->
+                </li>
+                <li class="li-list">
+                    <input type="checkbox" class="status"> <label> Feed bunnies</label>
+                    <!-- <button class="delete papa-button">Delete</button> -->
+                </li>
+                <li class="li-list">
+                    <input type="checkbox" class="status"> <label> Purchase 2 bottles of milk</label>
+                    <!-- <button class="delete papa-button">Delete</button> -->
+                </li>
+                <li class="li-list">
+                    <input type="checkbox" class="status"> <label> Contact Chuck for extra keys</label>
+                    <!-- <button class="delete papa-button">Delete</button> -->
+                </li>  
+                <li class="li-list">
+                    <input type="checkbox" class="status"> <label> Car Inspectiion Check</label>
+                    <!-- <button class="delete papa-button">Delete</button> -->
+                </li>      
+        </ul>
+    </div>
+
+    <!-- completed-todo-list-->
+    <div class="complete-list">
+        <h3 id="list-title" onclick="hideList()">Hide Completed Tasks</h3>
+        <ul class="ul-list" id="complete-ul-list">
+            <li class="li-list"> <label> Go to gym </label> <button class="delete papa-button">Delete</button></li>  
+            <li class="li-list"> <label> Reorder BW's food & hay </label> <button class="delete papa-button">Delete</button></li>  
+        </ul>
+    </div>
+
+    <script src="list.js"></script>
+</body>
+
+</html>
+
+
