@@ -1,15 +1,32 @@
 @import 'https://fonts.googleapis.com/css?family=Lato:300';
+@import url('https://fonts.googleapis.com/css?family=Ma+Shan+Zheng|Mansalva&display=swap');
+@import 'https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css';
+
+html, body, .background  {
+  color:#888;
+  font-weight: 400;
+  height: 100%;
+  /* width: 100%; */
+  /* height: 100%; */
+  margin: 0;
+  padding: 0;
+}
 
 html {
-  background: #eee;
-	background-image: linear-gradient(120deg, rgba(50, 150, 100, 0.2) , rgba(0, 0, 100, 0) );
-  color:#888;
-  font-weight: 350;
-  height: 100%;
+  background: #fff;
 }
 
 body {
   font-family: 'Lato', sans-serif;
+  background: #eee;
+  background: linear-gradient(0deg, rgba(0, 0, 200, 0.2) , rgba(0, 0, 200, 0) );
+  /* font-family: 'Mansalva', cursive, 'Ma Shan Zheng', cursive; */
+}
+
+.background 
+{
+	background: #eee;
+  background: linear-gradient(120deg, rgba(50, 150, 100, 0.2) , rgba(0, 0, 100, 0));
 }
 
 h3 {
@@ -17,6 +34,7 @@ h3 {
 }
 
 #myHeader {
+  font-family: 'Mansalva', cursive;
   margin: 40px 25px;
   position: absolute;
   right: 70px;
@@ -57,8 +75,8 @@ h3 {
 }
 
 .addFrame {
-  margin-top: 130px;
   margin-left: 40px;
+  padding: 120px 50px 0px 0px;
 }
 
 .list {
@@ -66,6 +84,21 @@ h3 {
   text-align: left;
   box-sizing: border-box;
 }
+
+ul.ul-list {
+  height: 650px;
+  width: 100%;
+  overflow-y: auto;
+}
+ul::-webkit-scrollbar {
+  background-color:transparent;
+  /* width: 6px; */
+  /* height: 10px; */
+}
+ul::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+ul::-webkit-scrollbar-button {display:none}
 
 li:empty:after {
   content: "Time to enjoy the rest of your day :)";
@@ -89,10 +122,12 @@ li {
 
 .list {
   float: left;
+  width: 45%;
 }
 
 .complete-list {
   float: left;
+  width: 55%;
 }
 
 .li-list {
@@ -105,7 +140,6 @@ li {
   position: relative;
   background-color: rgba(255,255,255, 0.23);
 }
-
 .li-list:after {
   position: absolute;
   transition: 0.3s;
@@ -114,13 +148,10 @@ li {
   left: 50%;
   bottom: 0;
   height: 3px;
-  background: #f7f7f7;
 }
-
 .li-list:hover {
   transform: scale(1.05);
 }
-
 .li-list:hover::after {
   width: 0%;
 }
@@ -131,7 +162,6 @@ li {
   text-align:left; 
   align-items: flex-start; 
 }
-
 .complete-li-list:hover {
   box-shadow: inset 0px 0px 0px 3px #aaa;;
 }
@@ -180,7 +210,7 @@ label {
   border-radius: 2px;
 }
 
-.papa-button:after {
+#addBtn.papa-button:after {
   position: absolute;
   transition: 0.3s;
   content: '';
@@ -195,36 +225,77 @@ label {
 .delete {
   position: absolute;
   align-items: center;
-  right: 15px;
-  top: 17px;
+  right: 10px;
+  top: 8px;
+  padding: 0.5em 1em;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  border: 0;
+  background: transparent;
+}
+
+.redo {
+  position: absolute;
+  align-items: center;
+  right: 60px;
+  top: 8px;
   padding: 0.5em 1em;
   color:#aaa;
   border: 2px solid #aaa;;
   border-radius: 30px;
+  rotate: 45deg;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  border: 0;
+  background: transparent;
 }
 
-.delete:after {
-  height: 120%;
-  left: -10%;
-  transform: skewX(15deg);
-}
-
-.papa-button:hover {
+#addBtn.papa-button:hover {
   cursor: pointer;
 }
-
-.papa-button:hover:after {
+#addBtn.papa-button:hover:after {
   width: 0%;
   width: 100%;
   left: 0;
 }
 
-.delete:hover {
-  border-radius: 30px;
-  box-shadow: inset 0px 0px 0px 3px #aaa;;
+i.material-icons {
+  font-size: 1.5rem;
+  color: rgba(50, 150, 100, 0.5);
+  background-color: transparent;
+  position: relative;
+  border-radius: 50%;
+  padding: 5px;
+  margin: 3px;
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.3s ease;
 }
-.delete:hover:after {
-  width: 0%;
+i.material-icons:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border: solid 2px;
+  border-color: rgba(50, 150, 100, 0.2);
+  transform: scale(0.8);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+i.material-icons:hover {
+  background-color: transparent;
+  transform: rotate(90deg);
+  cursor: pointer;
+  box-shadow: none;
+  color: white;
+  background-color: rgba(50, 150, 100, 0.2);
+}
+i.material-icons:hover:after {
+  transform: scale(1);
 }
 
 #list-title:active + #list-title:after {
@@ -284,7 +355,6 @@ label {
   transform: rotate(120deg);
 }
 
-
 @keyframes spin {
   100% { transform: rotate(360deg); }
 }
@@ -295,4 +365,3 @@ footer {
   width: 100%;
   text-align: center;
 }
-  

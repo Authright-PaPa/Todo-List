@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="list.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 <!DOCTYPE html>
 <html>
 
@@ -9,6 +11,7 @@
 </head>
 
 <body>
+<div class="background">
     <div class="icon sunny">
         <div class="sun">
             <div class="rays"></div>
@@ -23,7 +26,8 @@
 
     <div class="addFrame" id="addButton">
         <input type="text" id="todo" placeholder="Add a new task">
-        <button class="papa-button" type="submit" id="addBtn">add</button>
+        <button class="papa-button" type="submit" id="addBtn"> Add </button>
+        
         <!-- <button class="papa-button" id="deleteBtn" onclick="removeTask(this)">delete</button> -->
     </div>
 
@@ -34,23 +38,33 @@
             <li class="li-list">
                 <input type="checkbox" class="status">
                 <label> Buy Starbucks at 9am</label>
-                <!-- <button class="delete papa-button">Delete</button> -->
+                <button class="delete papa-button">
+                    <i class="material-icons">delete_outline</i>
+                </button>
             </li>
             <li class="li-list">
                 <input type="checkbox" class="status"> <label> Feed bunnies</label>
-                <!-- <button class="delete papa-button">Delete</button> -->
+                <button class="delete papa-button">
+                    <i class="material-icons">delete_outline</i>
+                </button>
             </li>
             <li class="li-list">
                 <input type="checkbox" class="status"> <label> Purchase 2 bottles of milk</label>
-                <!-- <button class="delete papa-button">Delete</button> -->
+                <button class="delete papa-button">
+                    <i class="material-icons">delete_outline</i>
+                </button>
             </li>
             <li class="li-list">
                 <input type="checkbox" class="status"> <label> Contact Chuck for extra keys</label>
-                <!-- <button class="delete papa-button">Delete</button> -->
+                <button class="delete papa-button">
+                    <i class="material-icons">delete_outline</i>
+                </button>
             </li>
             <li class="li-list">
                 <input type="checkbox" class="status"> <label> Car Inspectiion Check</label>
-                <!-- <button class="delete papa-button">Delete</button> -->
+                <button class="delete papa-button">
+                    <i class="material-icons">delete_outline</i>
+                </button>
             </li>
         </ul>
     </div>
@@ -59,14 +73,33 @@
     <div class="complete-list">
         <h3 id="list-title" onclick="hideList()">Hide Completed Tasks</h3>
         <ul class="ul-list" id="complete-ul-list">
-            <li class="li-list"> <label> Go to gym </label> <button class="delete papa-button">Delete</button></li>
-            <li class="li-list"> <label> Reorder BW's food & hay </label> <button
-                    class="delete papa-button">Delete</button></li>
+            <li class="li-list"> <label> Go to gym </label> 
+                <button class="redo papa-button">
+                    <i class="material-icons">redo</i>
+                </button>
+                <button class="delete papa-button">
+                    <i class="material-icons">delete_outline</i>
+                </button>
+            </li>
+            <li class="li-list"> <label> Reorder BW's food & hay </label> 
+                <button class="redo papa-button">
+                    <i class="material-icons">redo</i>
+                </button>
+                <button class="delete papa-button">
+                    <i class="material-icons">delete_outline</i>
+                </button>
+            </li>
         </ul>
     </div>
-
+    
     <script src="list.js"></script>
+
+    <!-- <div class="toggle toggle--daynight">
+        <input type="checkbox" id="toggle--daynight" class="toggle--checkbox">
+        <label class="toggle--btn" for="toggle--daynight"><span class="toggle--feature"></span></label>
+	</div> -->
 </body>
 
 <footer>  @Copyright Papa </footer>
+</div>
 </html>

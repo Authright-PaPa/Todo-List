@@ -1,83 +1,119 @@
-var newTask = document.getElementById("todo");
-var toDoUl = document.getElementById("ul-list");
-var completeUl = document.getElementById("complete-ul-list");
+const newTask = document.getElementById("todo");
+const toDoUl = document.getElementById("ul-list");
+const completeUl = document.getElementById("complete-ul-list");
 
 
-function createNewTask(task){
+createNewTask = (task) => {
   if (newTask.value.length > 0){
   console.log("Creating a new task...");
   
-  var li = document.createElement("li");
-  var checkBox = document.createElement("input");
-  var label = document.createElement("label"); 
-//   var button = document.createElement("button");
+  const li = document.createElement("li");
+  const checkBox = document.createElement("input");
+  const label = document.createElement("label"); 
   
   label.innerText = task;
   checkBox.type = "checkbox";
   checkBox.setAttribute('class', 'status')
-//   button.setAttribute("class","delete papa-button");
-//   button.innerText = "Delete";
+
+  const deleteBtn = document.createElement("button"); 
+  deleteBtn.className = "delete papa-button";
+  deleteBtn.innerHTML = "<i class='material-icons'>delete_outline</i>"
 
   li.setAttribute('class', 'li-list');
   li.appendChild(checkBox);
   li.appendChild(label);
-  //li.appendChild(button);
+  li.appendChild(deleteBtn);
+  
   return li; 
   } 
 };
 
-function addTask(){
+addTask = () => {
   console.log("Adding task to todo list...");
-  var li = createNewTask(newTask.value);
+  const li = createNewTask(newTask.value);
   toDoUl.appendChild(li); 
   newTask.value="";
 
   bindIncompleteItems(li, completeTask);
-  //bindCompleteItems(li, deleteTask);
+  // bindUndoItems(li, completeTask);
 };
 
 function completeTask(){
-  var li = this.parentNode;
+  const li = this.parentNode;
   
-  var deleteBtn = document.createElement("button"); 
-  deleteBtn.innerText ="Delete";
+  const redoBtn = document.createElement("button"); 
+  redoBtn.className = "redo papa-button";
+  redoBtn.innerHTML = "<i class='material-icons'>redo</i>"
+  li.appendChild(redoBtn);
+
+  const deleteBtn = document.createElement("button"); 
   deleteBtn.className = "delete papa-button";
+  deleteBtn.innerHTML = "<i class='material-icons'>delete_outline</i>"
   li.appendChild(deleteBtn);
   
-  var checkBox = li.querySelector("input[type=checkbox]");
+  const checkBox = li.querySelector("input[type=checkbox]");
   checkBox.remove();
   
   completeUl.appendChild(li); 
-  bindCompleteItems(li, deleteTask);
+  bindCompleteItems(li, redoTask);
+};
+
+function redoTask(){
+  const li = this.parentNode;
+
+  const checkBox = document.createElement("input");
+  checkBox.type = "checkbox";
+  checkBox.setAttribute('class', 'status')
+  li.appendChild(checkBox);
+  
+  const redoBtn = li.querySelector(".redo");
+  redoBtn.remove()
+  
+  toDoUl.appendChild(li); 
+  bindIncompleteItems(li, completeTask);
 };
 
 function deleteTask(){
   console.log("Deleting the task...");
-  var li = this.parentNode;
-  var ul = li.parentNode;
+  const li = this.parentNode;
+  const ul = li.parentNode;
   
   ul.removeChild(li);
 };
 
-function bindIncompleteItems(taskItem, checkBoxClick){  
+bindIncompleteItems = (taskItem, checkBoxClick) => {  
   console.log("Binding the todo list...");
-  var checkBox = taskItem.querySelector("input[type=checkbox]");
+  const checkBox = taskItem.querySelector("input[type=checkbox]");
+  const deleteButton = taskItem.querySelector(".delete");
   checkBox.onchange = checkBoxClick;  
+  deleteButton.onclick = deleteTask;
 }; 
 
-function bindCompleteItems(taskItem, deleteButtonPress){
+bindCompleteItems = (taskItem, redoButtonPress) => {
   console.log("Binding the complete list...");
-  var deleteButton = taskItem.querySelector(".delete");
-  deleteButton.onclick = deleteButtonPress;
+  const redoButton = taskItem.querySelector(".redo");
+  const deleteButton = taskItem.querySelector(".delete");
+  redoButton.onclick = redoButtonPress;
+  deleteButton.onclick = deleteTask;
 };
 
-for(var i=0; i < toDoUl.children.length; i++) {
+// bindUndoItems = (taskItem, redoButtonPress) => {
+//   console.log("Binding the undo task to todo list...");
+//   const redoButton = taskItem.querySelector(".redo");
+//   redoButton.onclick = redoButtonPress;
+// };
+
+for(let i=0; i < toDoUl.children.length; i++) {
   bindIncompleteItems(toDoUl.children[i], completeTask);
 }
 
-for(var i=0; i < completeUl.children.length; i++) {
-  bindCompleteItems(completeUl.children[i], deleteTask);
+for(let i=0; i < completeUl.children.length; i++) {
+  bindCompleteItems(completeUl.children[i], redoTask);
 }
+
+// for(let i=0; i < completeUl.children.length; i++) {
+//   bindUndoItems(completeUl.children[i], redoTask);
+// }
 
 window.onload = function() {
     document.getElementById('todo').onkeypress = function searchKeyPress(event) {
@@ -89,9 +125,9 @@ window.onload = function() {
    document.getElementById('addBtn').addEventListener("click", addTask);
 };
 
-function hideList() {
-    var list = document.getElementById("complete-ul-list");
-    var title = document.getElementById("list-title")
+hideList = () => {
+    const list = document.getElementById("complete-ul-list");
+    const title = document.getElementById("list-title")
 
     if (list.style.display == "none"){
         title.innerText = "Hide Completed Tasks";
