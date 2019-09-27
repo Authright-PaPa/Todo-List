@@ -9,12 +9,6 @@ let tasks = ["Buy Starbucks at 9am",
 "Go to gym",
 "Reorder BW's food & hay"];
 
-toggleDarkLight = () => {
-  const body = document.getElementById("body");
-  const currentClass = body.className;
-  body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
-}
-
 createNewTask = (task) => {
   if (newTask.value.length > 0){
   console.log("Creating a new task...");
@@ -58,14 +52,10 @@ function completeTask(){
   const redoBtn = document.createElement("button"); 
   redoBtn.className = "redo papa-button";
   redoBtn.innerHTML = "<i class='material-icons'>redo</i>"
-  li.appendChild(redoBtn);
-
-  const deleteBtn = document.createElement("button"); 
-  deleteBtn.className = "delete papa-button";
-  deleteBtn.innerHTML = "<i class='material-icons'>delete_outline</i>"
-  li.appendChild(deleteBtn);
   
   const checkBox = li.querySelector("input[type=checkbox]");
+
+  li.appendChild(redoBtn);
   checkBox.remove();
   
   completeUl.appendChild(li); 
@@ -193,6 +183,4 @@ function ac(value) {
         } 
     } 
 } 
-
-// Get Weather
 

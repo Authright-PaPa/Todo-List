@@ -26,27 +26,6 @@ body {
   /* font-family: 'Mansalva', cursive, 'Ma Shan Zheng', cursive; */
 }
 
-/* Text and background color for dark mode */
-@media (prefers-color-scheme: dark) {
-  body {
-    color: #ddd;
-    background: #444;
-    background-color: linear-gradient(0deg,  rgba(60, 60, 65, 0.945) , rgba(60, 60, 65, 0.945) );
-  }
-}
-
-@keyframes gradientBG {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
-
 .background 
 {
   background: #eee;
@@ -170,11 +149,38 @@ li {
   height: 3px;
 }
 .li-list:hover {
-  transform: scale(1.05);
+  transform: scale(1.025);
+  color: #eee;
+  --borderWidth: 3px;
+  background: rgba(255,255,255, 0.25);
+  position: relative;
+  border-radius: var(--borderWidth);
 }
 .li-list:hover::after {
-  width: 0%;
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  animation: animatedgradient 6s ease alternate infinite;
+  background-size: 300% 300%;
 }
+@keyframes animatedgradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 
 .complete-li-list {
   display: flex;
@@ -498,3 +504,4 @@ footer {
   width: 100%;
   text-align: center;
 }
+
