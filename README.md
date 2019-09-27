@@ -1,4 +1,3 @@
 # Todo-List
 
-
-![alt text](https://github.com/Authright-PaPa/Todo-List/blob/master/Todo-List.png | width=100)
+<img src="https://github.com/Authright-PaPa/Todo-List/blob/master/Todo-List.png" alt="" height="400" />
