@@ -9,6 +9,12 @@ let tasks = ["Buy Starbucks at 9am",
 "Go to gym",
 "Reorder BW's food & hay"];
 
+toggleDarkLight = () => {
+  const body = document.getElementById("body");
+  const currentClass = body.className;
+  body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+}
+
 createNewTask = (task) => {
   if (newTask.value.length > 0){
   console.log("Creating a new task...");
@@ -187,3 +193,6 @@ function ac(value) {
         } 
     } 
 } 
+
+// Get Weather
+
